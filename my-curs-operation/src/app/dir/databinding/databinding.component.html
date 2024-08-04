@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-3">
+        <input type="text" [(ngModel)]="courseName"/>
+        {{courseName}}
+    </div>
+    <div class="col-3">
+        <select [(ngModel)]="stateName">
+            <option value="selectstate">selectState</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Karanataka">Karanataka</option>
+            <option value="Punjab">Punjab</option>
+        </select>
+        {{stateName}}
+    </div>
+    <div class="col-3">
+        <input type="checkbox" [(ngModel)]="isIndian"/>
+        <h2>{{firstName()}}</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-4">
+        <div class="row">
+            <div class="col-4 bg-success">
+                interpolation
+                {{courseName}}
+                <div> {{inputType}}</div>
+                <input type="text" value="{{courseName}}" placeholder="enater name" />
+                <input type="{{inputType}}" value="{{courseName}}" placeholder="enater name" />
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        property Binding
+        <div [class]="myClassName">Danger</div>
+        <input type="text" [value]="courseName" />
+        <input [type]="inputType" />
+    </div>
+    <div class="col-4">
+        <button class="btn btn-success" (click)="showAlert('welcome angular')">click to msg</button>
+        <button class="btn btn-primary" (click)="changeCourseName()">click</button>
+    </div>
+</div>
