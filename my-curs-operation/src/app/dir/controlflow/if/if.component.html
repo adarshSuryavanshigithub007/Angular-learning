@@ -1,0 +1,96 @@
+<div class="mt-2 p-2 bg-secondary text-white rounded">
+  <h1>Structural Directive</h1>
+  <p>*If-else,</p>
+  <button class="btn btn-primary" >
+    Go To Structural
+  </button>
+</div>
+<div class="row pt-3">
+  <div class="col-3">
+    @if(div1Visible == true){
+      <div class="p-3 text-center bg-primary" >
+        <h4>Div-1</h4>
+      </div>
+    }
+
+  </div>
+  <div class="col-3">
+    @if (isWarningDivVisible) {
+      <div
+      class="bg-secondary p-3 text-center bg-warning">
+      <h4>Div-3</h4>
+    </div>
+    } @else {
+      <div class="bg-success p-3 text-center bg-success">
+        <h4>Div-2</h4>
+      </div>
+    }
+
+  </div>
+  <div class="col-3">
+    @if (num1 == num2) {
+      <div class="bg-success p-3 text-center bg-success">
+        <h4>Div-2</h4>
+      </div>
+    }
+  </div>
+  <div class="col-3">
+    @if (isActive == true) {
+      <div class="bg-primary p-3 text-center">
+        <h4>Div-4</h4>
+      </div>
+    }
+  </div>
+  <div class="col-3">
+    <div class="bg-warning mt-3 p-3 text-center">
+      @if (selectStatus == 'Active') {
+        <h4>Active</h4>
+      }@else if (selectStatus === 'De-Active') {
+        <h4>De-Active</h4>
+      }@else if (selectStatus === 'Pending') {
+        <h4>Pending</h4>
+      }@else {
+        <p>Please select stetus</p>
+      }
+    </div>
+  </div>
+</div>
+<div class="row pt-3">
+  <div class="col-3 text-center">
+    <button class="btn btn-danger" (click)="showDiv()">show div</button>
+    <button class="btn btn-primary mx-2" (click)="hideDiv()">Hide div</button>
+  </div>
+  <div class="col-3 text-center">
+    <button class="btn btn-success" (click)="toggle()">Toggle</button>
+  </div>
+  <div class="col-3">
+    <div style="display: flex; align-items: center">
+      <input
+        type="text"
+        placeholder="Num-1"
+        class="width-50"
+        [(ngModel)]="num1"
+
+      />
+      <input
+        type="text"
+        placeholder="Num-2"
+        class="width-50"
+        [(ngModel)]="num2"
+      />
+    </div>
+  </div>
+  <div class="col-3">
+    <div style="display: flex; align-items: center">
+      <input type="checkbox" [(ngModel)]="isActive" class="width-50" />
+      <select [(ngModel)]="selectStatus">
+        <option value="">Select State</option>
+        <option value="Active">Active</option>
+        <option value="De-Active">De-Active</option>
+        <option value="Pending">Pending</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+

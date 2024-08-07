@@ -1,0 +1,62 @@
+<div class="mt-2 p-2 bg-secondary text-white rounded">
+  <h1>PIPE</h1>
+  <p>pipe</p>
+</div>
+<div class="row pt-3">
+  <div class="col-3">
+    UpperCasePipe: <br/>
+    Orignal Value - {{firstName}}
+  </div>
+  <div class="col-3">
+    after pipe - {{firstName | uppercase}}
+  </div>
+  <div class="col-3">
+    LowerCasePipe: <br/>
+    Orignal Value - {{firstName}}
+  </div>
+  <div class="col-3">
+    after pipe - {{firstName | lowercase}}
+  </div>
+  <div class="row pt-3">
+    <div class="col-3">
+      TitleCasePipe: <br/>
+      Orignal Value - {{firstName}}
+    </div>
+    <div class="col-3">
+      after pipe - {{firstName | titlecase}}
+    </div>
+  </div>
+  <div class="row pt-3">
+    <div class="col-3">
+      DatePipe: <br/>
+      Orignal Value - {{currentDate}}
+    </div>
+    <div class="col-3">
+      after pipe - {{currentDate | date :'dd-MM-yyyy'}}
+    </div>
+    <div class="col-3">
+      orignal - {{student}}
+    </div>
+    <div class="col-3">
+      after pipe - {{student | json}}
+
+      custom api <br/>
+      after pipe - {{student.state | na}}
+
+    </div>
+  </div>
+
+  <div class="row pt-3">
+    <div class="col-3">
+      orignal - {{currentTime}}
+    </div>
+    <div class="col-3">
+      after pipe - {{currentTime | async}}
+    </div>
+    <div class="col-3">
+    </div>
+    <div class="col-3">
+
+    </div>
+  </div>
+</div>

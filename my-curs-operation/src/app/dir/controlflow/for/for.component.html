@@ -1,0 +1,106 @@
+<div class="mt-2 p-2 bg-secondary text-white rounded">
+  <h1>Structural Directive</h1>
+  <p>*forloop switch case,</p>
+</div>
+<div class="row pt-3">
+  <div class="col-3">
+    <ul>
+      @for (item of cityArray; track $index) {
+      <li>{{ item }}</li>
+      }
+    </ul>
+  </div>
+  <div class="col-3">
+    <select>
+      @for (item of cityArray; track $index) {
+      <option value="{{ item }}">{{ item }}</option>
+      }
+      <!-- <option value="">Select State</option>
+      <option value="Active">Active</option>
+      <option value="De-Active">De-Active</option>
+      <option value="Pending">Pending</option> -->
+    </select>
+  </div>
+  <div class="col-3">
+    <select>
+      @for (item of studentList; track $index) {
+      <option value="{{ item.studId }}">{{ item.name }}</option>
+      }
+      <!-- <option value="">Select State</option>
+      <option value="Active">Active</option>
+      <option value="De-Active">De-Active</option>
+      <option value="Pending">Pending</option> -->
+    </select>
+  </div>
+</div>
+<div class="row">
+  <div class="col-3">Day Name is :
+    @switch (dayNumber) {
+      @case ('1') {
+        <p>Monday</p>
+      }
+      @case ('2') {
+        <p>Tuesday</p>
+      }
+      @case ('3') {
+        <p>Wednesday</p>
+      }
+      @case ('4') {
+        <p>Thursday</p>
+      }
+      @case ('5') {
+        <p>Friday</p>
+      }
+      @case ('6') {
+        <p>saturday</p>
+      }
+      @case ('7') {
+        <p>Sunday</p>
+      }
+      @default {
+        <span>wrong Entry</span>
+      }
+    }
+
+  </div>
+  <div class="col-3">
+    <input type="text"  placeholder="day"  [(ngModel)]="dayNumber" />
+  </div>
+
+</div>
+<div class="row pt-3">
+  <div class="col-3">
+    <div class="row">
+      <div class="col-5">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Sr No</th>
+              <th>Name</th>
+              <th>City</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of studentList; track $index) {
+            <tr>
+              <td>{{ $index + 1 }}</td>
+              <td>{{ item.name }}</td>
+              <td>{{ item.city }}</td>
+              <!-- <td>
+                  <span *ngIf="student.isActive">Active</span>
+                  <span *ngIf="!student.isActive">De-Active</span>
+                </td> -->
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-3">
+    <div style="display: flex; align-items: center">
+      <input type="checkbox" class="width-50" />
+    </div>
+  </div>
+</div>
