@@ -9,6 +9,7 @@ import { IfComponent } from './dir/controlflow/if/if.component';
 import { ForComponent } from './dir/controlflow/for/for.component';
 import { PipeComponent } from './pipe/pipe.component';
 import { TemplateComponent } from './form validation/template/template.component';
+import { ReactiveComponent } from './form validation/reactive/reactive.component';
 
 export const routes: Routes = [
   {
@@ -46,6 +47,10 @@ export const routes: Routes = [
   {
     path:'template-form',
     component:TemplateComponent
+  },
+  {
+    path:'reactiv-form',
+    component:ReactiveComponent
   }
 
 ];

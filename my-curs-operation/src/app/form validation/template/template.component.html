@@ -1,64 +1,135 @@
-<form class="row g-3 needs-validation" novalidate>
+<form class="row g-3 needs-validation" novalidate #form ="ngForm">
   <div class="col-md-4">
     <label for="validationCustom01" class="form-label">First name</label>
-    <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
-    <div class="valid-feedback">
-      Looks good!
+    <input
+      type="text"
+      name="firstName"
+      [(ngModel)]="studentObj.firstName"
+      class="form-control"
+      id="validationCustom01"
+      value="Mark"
+      required
+      #fName = ngModel
+    />
+    <div class="text-danger" *ngIf="(fName.touched || flName.dirty) && fName.errors?.['required']">
+      <span >This is Required</span>
     </div>
   </div>
   <div class="col-md-4">
     <label for="validationCustom02" class="form-label">Last name</label>
-    <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
-    <div class="valid-feedback">
-      Looks good!
+    <input
+      type="text"
+      name="lastName"
+      [(ngModel)]="studentObj.lastName"
+      class="form-control"
+      id="validationCustom02"
+      value="Otto"
+      required
+      #flName="ngModel"
+    />
+    <div class="text-danger" *ngIf="(flName.touched || flName.dirty) && flName.errors?.['required']">
+      <span >This is Required</span>
     </div>
   </div>
   <div class="col-md-4">
     <label for="validationCustomUsername" class="form-label">Username</label>
     <div class="input-group has-validation">
-      <span class="input-group-text" id="inputGroupPrepend"></span>
-      <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
-      <div class="invalid-feedback">
-        Please choose a username.
-      </div>
+      <input
+        type="text"
+        name="userName"
+        [(ngModel)]="studentObj.userName"
+        class="form-control"
+        id="validationCustomUsername"
+        aria-describedby="inputGroupPrepend"
+        required
+        #fuserName="ngModel"
+      />
+    </div>
+    <div class="text-danger" *ngIf="(fuserName.touched||fuserName.dirty) && fuserName.errors?.['required']">
+      <span >This is Required</span>
     </div>
   </div>
   <div class="col-md-6">
     <label for="validationCustom03" class="form-label">City</label>
-    <input type="text" class="form-control" id="validationCustom03" required>
-    <div class="invalid-feedback">
-      Please provide a valid city.
-    </div>
+    <input
+      type="text"
+      name="city"
+      [(ngModel)]="studentObj.city"
+      class="form-control"
+      id="validationCustom03"
+      required
+      #fcity = "ngModel"
+    />
+  </div>
+  <div class="text-danger" *ngIf="(fcity.touched || fuserName.dirty) && fcity.errors?.['required']">
+    <span>This is required</span>
   </div>
   <div class="col-md-3">
     <label for="validationCustom04" class="form-label">State</label>
-    <select class="form-select" id="validationCustom04" required>
+    <select
+      [(ngModel)]="studentObj.state"
+      name="state"
+      class="form-select"
+      id="validationCustom04"
+      required
+      #fstate = "ngModel"
+    >
       <option selected disabled value="">Choose...</option>
-      <option>...</option>
+      <option value="Maharashtra">Maharashtra</option>
+      <option value="Karanataka">Karanataka</option>
+      <option value="Punjab">Punjab</option>
     </select>
-    <div class="invalid-feedback">
-      Please select a valid state.
+    <div class="text-danger" *ngIf="(fstate.touched || fstate.dirty) && fstate.errors?.['required']">
+      <span>this is required</span>
     </div>
   </div>
   <div class="col-md-3">
     <label for="validationCustom05" class="form-label">Zip</label>
-    <input type="text" class="form-control" id="validationCustom05" required>
-    <div class="invalid-feedback">
-      Please provide a valid zip.
-    </div>
+    <input
+      type="text"
+      name="zipCode"
+      [(ngModel)]="studentObj.zipCode"
+      class="form-control"
+      id="validationCustom05"
+      required
+      #fzip = ngModel
+    />
+  </div>
+  <div class="text-danger" *ngIf="(fzip.touched || fzip.dirty) && fzip.errors?.['required']">
+    <span>this is required</span>
   </div>
   <div class="col-12">
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+      <input
+        class="form-check-input"
+        name="isAccepTerms"
+        [(ngModel)]="studentObj.isAccepTerms"
+        type="checkbox"
+        value=""
+        id="invalidCheck"
+        required
+      />
       <label class="form-check-label" for="invalidCheck">
         Agree to terms and conditions
       </label>
-      <div class="invalid-feedback">
-        You must agree before submitting.
+      <div class="invalid-feedback">You must agree before submitting.</div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <button class="btn btn-primary" type="submit" (click)="onSubmit()" [disabled]="form.invalid">
+          Submit form
+        </button>
+      </div>
+      <div class="col-6">
+        <button class="btn btn-secondary" type="submit" (click)="onReset()">
+          Reset form
+        </button>
+
       </div>
     </div>
   </div>
-  <div class="col-12">
-    <button class="btn btn-primary" type="submit">Submit form</button>
-  </div>
+  {{ formValue | json }}
+
 </form>
