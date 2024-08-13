@@ -1,0 +1,71 @@
+<div class="row pt-2">
+  <div class="col-8">
+      <div class="card">
+          <div class="card-header bg-secondary text-white">
+              Department List
+          </div>
+          <div class="card-body">
+              <div class="row">
+                  <div class="col-12">
+                      <table class="table table-bordered">
+                          <thead>
+                              <tr>
+                                  <th>Sr No</th>
+                                  <th>Name</th>
+                                  <th>Logo</th>
+                                  <th>Action</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let cutomer of newCustomer">
+                                  <td>{{cutomer.departmentId}}</td>
+                                  <td>{{cutomer.departmentName}}</td>
+                                  <td>{{cutomer.departmentLogo}}</td>
+                                  <td>
+                                      <button class="btn btn-primary" (click)="getEdit(cutomer)">Edit</button>
+
+
+                                      <button class="btn btn-danger" >Delete</button>
+                                  </td>
+                              </tr>
+
+
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+  </div>
+  <div class="col-4">
+      <div class="card">
+          <div class="card-header bg-secondary text-white">
+              New Department
+          </div>
+          <div class="card-body">
+              <div class="row">
+                  <div class="col-12">
+                      <label for="">Department Name</label>
+                      <input type="text" class="form-control" [(ngModel)]="department.departmentName" placeholder="Enter Name">
+                  </div>
+                  <div class="col-12">
+                      <label for="">Department Logo</label>
+                      <input type="text" class="form-control" [(ngModel)]="department.departmentLogo" placeholder="Enter Logo Url">
+                  </div>
+              </div>
+              <div class="row pt-3">
+                  <div class="col-6 text-center">
+                      <button class="btn btn-secondary">Reset</button>
+                  </div>
+                  <div class="col-6 text-center">
+                    <button class="btn btn-success" (click)="save()"  *ngIf="department.departmentId === 0; else updateButton" >Save </button>
+                    <ng-template #updateButton>
+                      <button class="btn btn-warning" (click)="update()">Update </button>
+                    </ng-template>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

@@ -13,11 +13,8 @@ import { NaPipe } from '../customPipe/pipes/na.pipe';
   styleUrl: './pipe.component.css'
 })
 export class PipeComponent {
-
   firstName: string = 'this is requirment demo';
-
   currentDate = new Date()
-
   currentTime: Observable<Date> = new Observable<Date>
   student: any = {
     name: "John Doe",

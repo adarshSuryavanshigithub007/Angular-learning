@@ -10,6 +10,8 @@ import { ForComponent } from './dir/controlflow/for/for.component';
 import { PipeComponent } from './pipe/pipe.component';
 import { TemplateComponent } from './form validation/template/template.component';
 import { ReactiveComponent } from './form validation/reactive/reactive.component';
+import { GetApiComponent } from '../screen/apiintegration/get-api/get-api.component';
+import { PostComponent } from '../screen/apiintegration/post-api/post/post.component';
 
 export const routes: Routes = [
   {
@@ -51,6 +53,14 @@ export const routes: Routes = [
   {
     path:'reactiv-form',
     component:ReactiveComponent
+  },
+  {
+    path:'get-api',
+    component:GetApiComponent
+  },
+  {
+    path:'Post-api',
+    component:PostComponent
   }
 
 ];
