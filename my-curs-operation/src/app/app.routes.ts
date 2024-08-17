@@ -12,6 +12,7 @@ import { TemplateComponent } from './form validation/template/template.component
 import { ReactiveComponent } from './form validation/reactive/reactive.component';
 import { GetApiComponent } from '../screen/apiintegration/get-api/get-api.component';
 import { PostComponent } from '../screen/apiintegration/post-api/post/post.component';
+import { LifeCycleEventComponent } from './lifeCycle/life-cycle-event/life-cycle-event.component';
 
 export const routes: Routes = [
   {
@@ -61,6 +62,10 @@ export const routes: Routes = [
   {
     path:'Post-api',
     component:PostComponent
+  },
+  {
+    path:'lifecycle',
+    component:LifeCycleEventComponent
   }
 
 ];

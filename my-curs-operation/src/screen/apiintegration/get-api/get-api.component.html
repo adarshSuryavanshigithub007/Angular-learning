@@ -1,6 +1,9 @@
+
+<app-alert [message]="message" alertType="danger"></app-alert>
+<app-button [btnClass]="'btn btn-danger'" [btnText]="'delete'"></app-button>
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md12">
       <table class="table  table-bordered text-center">
         <thead>
           <tr>
@@ -38,4 +41,5 @@
       </li>
     </ul>
   </nav>
+  <button (click)="getChange()">message-change</button>
 </div>
