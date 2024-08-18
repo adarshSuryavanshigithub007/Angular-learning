@@ -13,6 +13,8 @@ import { ReactiveComponent } from './form validation/reactive/reactive.component
 import { GetApiComponent } from '../screen/apiintegration/get-api/get-api.component';
 import { PostComponent } from '../screen/apiintegration/post-api/post/post.component';
 import { LifeCycleEventComponent } from './lifeCycle/life-cycle-event/life-cycle-event.component';
+import { NgTemplateComponent } from './template/ng-template/ng-template.component';
+import { NgContainerComponent } from './template/ng-container/ng-container.component';
 
 export const routes: Routes = [
   {
@@ -66,6 +68,14 @@ export const routes: Routes = [
   {
     path:'lifecycle',
     component:LifeCycleEventComponent
+  },
+  {
+    path:'ng-template',
+    component:NgTemplateComponent
+  },
+  {
+    path:'ng-containar',
+    component:NgContainerComponent
   }
 
 ];
