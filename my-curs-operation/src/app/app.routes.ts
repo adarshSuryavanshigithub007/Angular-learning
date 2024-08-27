@@ -15,67 +15,90 @@ import { PostComponent } from '../screen/apiintegration/post-api/post/post.compo
 import { LifeCycleEventComponent } from './lifeCycle/life-cycle-event/life-cycle-event.component';
 import { NgTemplateComponent } from './template/ng-template/ng-template.component';
 import { NgContainerComponent } from './template/ng-container/ng-container.component';
+import { ViewChildComponent } from './view-child/view-child.component';
+import { LoginComponent } from '../screen/authentication/login/login.component';
+import { NavbarComponent } from '../layout/navbar/navbar.component';
 
 export const routes: Routes = [
   {
-    path :'add-Books',
-    component:AddnewbooksComponent
+    path:'',
+    redirectTo:'login',
+    pathMatch:"full"
   },
   {
-    path: 'data-binding',
-    component: DatabindingComponent
+    path:'login',
+    component:LoginComponent
   },
   {
-    path:'booklist',
-    component:BooklistComponent
-  },
-  {
-    path:'structural-dir',
-    component:StructuraldirComponent
-  },
-  {
-    path:'attribute-dir',
-    component:AttributedirectiveComponent
-  },
-  {
-    path:'if-else',
-    component:IfComponent
-  },
-  {
-    path:'loop',
-    component:ForComponent
-  },
-  {
-    path:'pipe',
-    component:PipeComponent
-  },
-  {
-    path:'template-form',
-    component:TemplateComponent
-  },
-  {
-    path:'reactiv-form',
-    component:ReactiveComponent
-  },
-  {
-    path:'get-api',
-    component:GetApiComponent
-  },
-  {
-    path:'Post-api',
-    component:PostComponent
-  },
-  {
-    path:'lifecycle',
-    component:LifeCycleEventComponent
-  },
-  {
-    path:'ng-template',
-    component:NgTemplateComponent
-  },
-  {
-    path:'ng-containar',
-    component:NgContainerComponent
+    path:'',
+    component:NavbarComponent,
+    children:[
+      {
+        path :'add-Books',
+        component:AddnewbooksComponent
+      },
+      {
+        path: 'data-binding',
+        component: DatabindingComponent
+      },
+      {
+        path:'booklist',
+        component:BooklistComponent
+      },
+      {
+        path:'structural-dir',
+        component:StructuraldirComponent
+      },
+      {
+        path:'attribute-dir',
+        component:AttributedirectiveComponent
+      },
+      {
+        path:'if-else',
+        component:IfComponent
+      },
+      {
+        path:'loop',
+        component:ForComponent
+      },
+      {
+        path:'pipe',
+        component:PipeComponent
+      },
+      {
+        path:'template-form',
+        component:TemplateComponent
+      },
+      {
+        path:'reactiv-form',
+        component:ReactiveComponent
+      },
+      {
+        path:'get-api',
+        component:GetApiComponent
+      },
+      {
+        path:'Post-api',
+        component:PostComponent
+      },
+      {
+        path:'lifecycle',
+        component:LifeCycleEventComponent
+      },
+      {
+        path:'ng-template',
+        component:NgTemplateComponent
+      },
+      {
+        path:'ng-containar',
+        component:NgContainerComponent
+      },
+      {
+        path:'viewChild',
+        component:ViewChildComponent
+      }
+    ]
   }
+
 
 ];
