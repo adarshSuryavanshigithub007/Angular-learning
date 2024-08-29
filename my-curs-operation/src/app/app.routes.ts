@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { AddnewbooksComponent } from '../screen/addnewbooks/addnewbooks.component';
 import { DatabindingComponent } from './dir/databinding/databinding.component';
-import { BooklistComponent } from '../screen/booklist/booklist.component';
 import { StructuraldirComponent } from './dir/structuraldir/structuraldir.component';
 import { AttributedirectiveComponent } from './dir/attributedirective/attributedirective.component';
 // import { ControlflowComponent } from './dir/controlflow/controlflow.component';
@@ -18,6 +17,7 @@ import { NgContainerComponent } from './template/ng-container/ng-container.compo
 import { ViewChildComponent } from './view-child/view-child.component';
 import { LoginComponent } from '../screen/authentication/login/login.component';
 import { NavbarComponent } from '../layout/navbar/navbar.component';
+import { EditBooksComponent } from '../screen/edit-books/edit-books.component';
 
 export const routes: Routes = [
   {
@@ -38,12 +38,12 @@ export const routes: Routes = [
         component:AddnewbooksComponent
       },
       {
-        path: 'data-binding',
-        component: DatabindingComponent
+        path :'edit/:id',
+        component:EditBooksComponent
       },
       {
-        path:'booklist',
-        component:BooklistComponent
+        path: 'data-binding',
+        component: DatabindingComponent
       },
       {
         path:'structural-dir',

@@ -1,0 +1,37 @@
+<div class="col-12 col-md-4 col-sm-6">
+  <div class="card login-form mt-3">
+    <div class="card-body">
+        <h5 class="card-title text-center">Add New Books</h5>
+        <form  class="row g-3 needs-validation" novalidate [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+          {{bookForm}}
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" placeholder="Title" class="form-control" id="title" formControlName="title" required >
+                    <!-- <span class="text-danger" *ngIf="(newBookForm.controls['title'].touched || newBookForm.controls['title'].dirty) && newBookForm.controls['title'].errors?.['required']">*Requird</span> -->
+            </div>
+            <div class="mb-3">
+                <label for="author" class="form-label">Author</label>
+                <input type="text" class="form-control" placeholder="author" id="author" formControlName="author" required="">
+                <!-- <span class="text-danger" *ngIf="(newBookForm.controls['author'].touched || newBookForm.controls['author'].dirty) && newBookForm.controls['author'].errors?.['required']">*Requird</span> -->
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <input type="text" class="form-control" placeholder="description" id="description" formControlName="description" required>
+              <!-- <span class="text-danger" *ngIf="(newBookForm.controls['description'].touched || newBookForm.controls['description'].dirty) && newBookForm.controls['description'].errors?.['required']">*Requird</span> -->
+          </div>
+            <div class="mb-3">
+              <label for="publishYear" class="form-label">PublishYear</label>
+              <input type="text" class="form-control" placeholder="publishYear" id="publishYear" formControlName="publishYear" required>
+              <!-- <span class="text-danger" *ngIf="(newBookForm.controls['publishYear'].touched || newBookForm.controls['publishYear'].dirty) && newBookForm.controls['publishYear'].errors?.['required']">*Requird</span> -->
+          </div>
+            <div class="mb-3">
+              <label for="price" class="form-label">Price</label>
+              <input type="text" class="form-control" placeholder="price" id="price" formControlName="price" required>
+              <!-- <span class="text-danger" *ngIf="(newBookForm.controls['price'].touched || newBookForm.controls['price'].dirty) && newBookForm.controls['price'].errors?.['required']">*Requird</span> -->
+          </div>
+            <button type="submit" class="btn btn-primary w-100" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+</div>
+<!-- </div> -->

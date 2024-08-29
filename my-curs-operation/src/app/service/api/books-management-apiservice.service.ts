@@ -1,10 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Constants } from '../../config/API';
+
+interface Book {
+  title: string;
+  author: string;
+  price: number;
+  description: string;
+  publishYear: number;
+  _id: string; // assuming you have an _id field for identifying books
+}
+
 interface Response {
   message: string;
   success:boolean
-  data: null;
+  data: Book | null;
 }
 @Injectable({
   providedIn: 'root'
@@ -30,4 +40,25 @@ export class BooksManagementApiserviceService {
       }
     })
   }
+
+  deleteBooks = (id:any)=>{
+    return this.http.delete<Response>(`${this.URL}/books/`+id,{
+      headers: {
+        'Authorization': `Bearer ${this.Token}`
+      }
+    })
+  }
+
+  getDataById=(id:any)=>{
+console.log(id)
+    return this.http.get<Response>(`${this.URL}/books/`+id,{
+      headers: {
+        'Authorization': `Bearer ${this.Token}`
+      }
+    })
+
+
+  }
+
+
 }

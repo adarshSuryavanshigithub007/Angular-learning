@@ -16,7 +16,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class AddnewbooksComponent  {
   formValue= null
   getAllBooks = null
-  constructor(private service: BooksManagementApiserviceService, private spinner: NgxSpinnerService) {
+  constructor(private service: BooksManagementApiserviceService, private spinner: NgxSpinnerService, private router:Router) {
     this.getBooksList()
   }
   newBookForm: FormGroup = new FormGroup({
@@ -33,11 +33,10 @@ export class AddnewbooksComponent  {
   // }
 
   submitNewBook() {
-    this.formValue = this.newBookForm.value;
-
+    // this.formValue = ;
     try {
       this.spinner.show();
-      this.service.addNewBooks(this.formValue).subscribe((response)=>{
+      this.service.addNewBooks(this.newBookForm.value).subscribe((response)=>{
         console.log(response)
         if (response.success === true) {
           console.log("working")
@@ -48,6 +47,24 @@ export class AddnewbooksComponent  {
       console.error('An unexpected error occurred:', error);
       this.spinner.hide();
     }
+  this.newBookForm.reset()
+  }
+
+  getDeleteEachRecord(id:any){
+    console.log(id)
+    try {
+      this.spinner.show()
+      this.service.deleteBooks(id).subscribe((response)=>{
+        console.log(response)
+        if(response.success === true){
+          this.getBooksList()
+          alert(response.message)
+        }
+      })
+    } catch (error) {
+      this.spinner.hide()
+    }
+
   }
   getBooksList() {
     try {
@@ -57,16 +74,20 @@ export class AddnewbooksComponent  {
         if (response.success) {
           this.spinner.hide()
           console.log(response.data)
-          this.getAllBooks = response.data
-
+         if(response.data){
+          // this.getAllBooks = response.data
+         }
         }
       },error=>{
         console.log(error)
       })
     } catch (error) {
-
     }
   }
 
+  navigateToEditPage(book:any){
+    console.log(book)
+    this.router.navigate(['/edit',book._id])
+  }
 
 }

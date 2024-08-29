@@ -22,8 +22,8 @@
               <td data-label="last-formControlName">{{eachBook.description}}</td>
               <td data-label="email">{{eachBook.price}}</td>
               <td data-label="email">{{eachBook.publishYear}}</td>
-              <td><button class="btn btn-danger">Delete</button></td>
-              <td><button class="btn btn-primary">Edit</button></td>
+              <td><button class="btn btn-danger"  (click)="getDeleteEachRecord(eachBook._id)">Delete</button></td>
+              <td><button class="btn btn-primary"  (click)="navigateToEditPage(eachBook)">Edit</button></td>
 
             </tr>
           </tbody>
