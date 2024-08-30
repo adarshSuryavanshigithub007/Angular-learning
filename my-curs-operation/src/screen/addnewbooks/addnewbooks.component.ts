@@ -13,10 +13,10 @@ import { NgxSpinnerService } from 'ngx-spinner';
   templateUrl: './addnewbooks.component.html',
   styleUrl: './addnewbooks.component.css'
 })
-export class AddnewbooksComponent  {
-  formValue= null
-  getAllBooks = null
-  constructor(private service: BooksManagementApiserviceService, private spinner: NgxSpinnerService, private router:Router) {
+export class AddnewbooksComponent {
+  formValue = null
+  getAllBooks: any = null
+  constructor(private service: BooksManagementApiserviceService, private spinner: NgxSpinnerService, private router: Router) {
     this.getBooksList()
   }
   newBookForm: FormGroup = new FormGroup({
@@ -26,17 +26,17 @@ export class AddnewbooksComponent  {
     description: new FormControl(''),
     publishYear: new FormControl(''),
   })
-  // ngOnInit(): void {
-  //   //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-  //   //Add 'implements OnInit' to the class.
-  //   this.getBooksList()
-  // }
+
+  getShortId(id:any){
+    console.log(id.slice(1,9))
+    return id.slice(1,5)
+  }
 
   submitNewBook() {
     // this.formValue = ;
     try {
       this.spinner.show();
-      this.service.addNewBooks(this.newBookForm.value).subscribe((response)=>{
+      this.service.addNewBooks(this.newBookForm.value).subscribe((response) => {
         console.log(response)
         if (response.success === true) {
           console.log("working")
@@ -47,16 +47,16 @@ export class AddnewbooksComponent  {
       console.error('An unexpected error occurred:', error);
       this.spinner.hide();
     }
-  this.newBookForm.reset()
+    this.newBookForm.reset()
   }
 
-  getDeleteEachRecord(id:any){
+  getDeleteEachRecord(id: any) {
     console.log(id)
     try {
       this.spinner.show()
-      this.service.deleteBooks(id).subscribe((response)=>{
+      this.service.deleteBooks(id).subscribe((response) => {
         console.log(response)
-        if(response.success === true){
+        if (response.success === true) {
           this.getBooksList()
           alert(response.message)
         }
@@ -74,20 +74,20 @@ export class AddnewbooksComponent  {
         if (response.success) {
           this.spinner.hide()
           console.log(response.data)
-         if(response.data){
-          // this.getAllBooks = response.data
-         }
+          if (response.data) {
+            this.getAllBooks = response.data
+          }
         }
-      },error=>{
+      }, error => {
         console.log(error)
       })
     } catch (error) {
     }
   }
 
-  navigateToEditPage(book:any){
+  navigateToEditPage(book: any) {
     console.log(book)
-    this.router.navigate(['/edit',book._id])
+    this.router.navigate(['/edit', book._id])
   }
 
 }

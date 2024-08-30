@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BooksManagementApiserviceService } from '../../app/service/api/books-management-apiservice.service';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -19,7 +19,7 @@ export class EditBooksComponent implements OnInit {
   bookForm: FormGroup;
 
 
-  constructor( private route:ActivatedRoute,private service: BooksManagementApiserviceService){
+  constructor( private route:ActivatedRoute, private router:Router, private service: BooksManagementApiserviceService){
     this.bookId = this.route.snapshot.paramMap.get('id') ?? '';
     // this.bookDetails = this.route.snapshot.paramMap.get('book')
     this.getData(this.bookId)
@@ -63,10 +63,11 @@ console.log(this.bookDetails)
 
   onSubmit(){
     console.log(this.bookForm.value)
-    this.service.addNewBooks(this.bookForm.value).subscribe((response) => {
+    this.service.getSubmitUpdatedBook(this.bookForm.value,this.bookId).subscribe((response) => {
       console.log(response)
       if (response.success === true) {
         console.log("working")
+        this.router.navigate(['/add-Books']);
         // this.getBooksList()
       }
     })

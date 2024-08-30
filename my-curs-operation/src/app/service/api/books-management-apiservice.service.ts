@@ -56,9 +56,14 @@ console.log(id)
         'Authorization': `Bearer ${this.Token}`
       }
     })
-
-
   }
 
+  getSubmitUpdatedBook = (data: any, id: any) => {
+    return this.http.put<Response>(`${this.URL}/books/${id}`, data, {
+      headers: {
+        'Authorization': `Bearer ${this.Token}`
+      }
+    });
+  }
 
 }
