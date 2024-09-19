@@ -12,7 +12,7 @@
       #fName = ngModel
     />
     <div class="text-danger" *ngIf="(fName.touched || flName.dirty) && fName.errors?.['required']">
-      <span >This is Required</span>
+      <span >{{validationMessage.REQUIRED}}</span>
     </div>
   </div>
   <div class="col-md-4">
@@ -118,7 +118,7 @@
   <div class="container">
     <div class="row">
       <div class="col-6">
-        <button class="btn btn-primary" type="submit" (click)="onSubmit()" [disabled]="form.invalid">
+        <button class="btn btn-primary" type="submit" (click)="onSubmit()">
           Submit form
         </button>
       </div>

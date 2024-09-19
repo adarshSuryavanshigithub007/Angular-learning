@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Constants } from '../../config/API';
+import { APIConstants } from '../../constant/api.constants';
+import { UserApIEndPointConstants } from '../../constant/user-api-end-point.constants';
+
 
 interface Book {
   title: string;
@@ -20,13 +23,13 @@ interface Response {
   providedIn: 'root'
 })
 export class BooksManagementApiserviceService {
-  public URL: string = Constants.API_URL;
+  // public URL: string = Constants.API_URL;
   public Token =  localStorage.getItem('token')
   constructor(private http: HttpClient) { }
 
   addNewBooks(data: any) {
-    console.log(`${this.URL}/new-books`)
-    return this.http.post<Response>(`${this.URL}/new-books`, data,{
+    console.log(`${APIConstants.API_URL}/${UserApIEndPointConstants.BOOKMANAGEMENT_METHOD.CREATE_BOOK}`)
+    return this.http.post<Response>(`${APIConstants.API_URL}/${UserApIEndPointConstants.BOOKMANAGEMENT_METHOD.CREATE_BOOK}`, data,{
       headers: {
         'Authorization': `Bearer ${this.Token}`
       }
@@ -34,7 +37,7 @@ export class BooksManagementApiserviceService {
   }
 
   listOfBooks(){
-    return this.http.get<Response>(`${this.URL}/books`,{
+    return this.http.get<Response>(`${APIConstants.API_URL}/${UserApIEndPointConstants.BOOKMANAGEMENT_METHOD.GET_ALL_BOOKS}`,{
       headers: {
         'Authorization': `Bearer ${this.Token}`
       }
@@ -42,7 +45,7 @@ export class BooksManagementApiserviceService {
   }
 
   deleteBooks = (id:any)=>{
-    return this.http.delete<Response>(`${this.URL}/books/`+id,{
+    return this.http.delete<Response>(`${APIConstants.API_URL}/${UserApIEndPointConstants.BOOKMANAGEMENT_METHOD.DELETE_BOOK}/`+id,{
       headers: {
         'Authorization': `Bearer ${this.Token}`
       }
@@ -51,7 +54,7 @@ export class BooksManagementApiserviceService {
 
   getDataById=(id:any)=>{
 console.log(id)
-    return this.http.get<Response>(`${this.URL}/books/`+id,{
+    return this.http.get<Response>(`${APIConstants.API_URL}/${UserApIEndPointConstants.BOOKMANAGEMENT_METHOD.CREATE_BOOK}/`+id,{
       headers: {
         'Authorization': `Bearer ${this.Token}`
       }
@@ -59,7 +62,7 @@ console.log(id)
   }
 
   getSubmitUpdatedBook = (data: any, id: any) => {
-    return this.http.put<Response>(`${this.URL}/books/${id}`, data, {
+    return this.http.put<Response>(`${APIConstants.API_URL}/books/${id}`, data, {
       headers: {
         'Authorization': `Bearer ${this.Token}`
       }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NaPipe } from '../../customPipe/pipes/na.pipe';
 import { CommonModule, JsonPipe } from '@angular/common';
+import { MessageConstants } from '../../constant/message.constants';
 
 @Component({
   selector: 'app-template',
@@ -26,6 +27,12 @@ export class TemplateComponent {
 
   cityArray: string [] = ['Pune','Mumbai','Nagpur','Thane'];
 
+  validationMessage : any = MessageConstants.VALIDATION_MESSAGE
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    console.log(this.validationMessage)
+  }
   onSubmit(){
     // debugger
     this.formValue = this.studentObj

@@ -18,6 +18,7 @@ import { ViewChildComponent } from './view-child/view-child.component';
 import { LoginComponent } from '../screen/authentication/login/login.component';
 import { NavbarComponent } from '../layout/navbar/navbar.component';
 import { EditBooksComponent } from '../screen/edit-books/edit-books.component';
+import { authGuard } from '../screen/authentication/authGuard/auth.guard';
 
 export const routes: Routes = [
   {
@@ -35,67 +36,83 @@ export const routes: Routes = [
     children:[
       {
         path :'add-Books',
-        component:AddnewbooksComponent
+        component:AddnewbooksComponent,
+        canActivate:[authGuard]
       },
       {
         path :'edit/:id',
-        component:EditBooksComponent
+        component:EditBooksComponent,
+        canActivate:[authGuard]
       },
       {
         path: 'data-binding',
-        component: DatabindingComponent
+        component: DatabindingComponent,
+        canActivate:[authGuard]
       },
       {
         path:'structural-dir',
-        component:StructuraldirComponent
+        component:StructuraldirComponent,
+        canActivate:[authGuard]
       },
       {
         path:'attribute-dir',
-        component:AttributedirectiveComponent
+        component:AttributedirectiveComponent,
+        canActivate:[authGuard]
       },
       {
         path:'if-else',
-        component:IfComponent
+        component:IfComponent,
+        canActivate:[authGuard]
       },
       {
         path:'loop',
-        component:ForComponent
+        component:ForComponent,
+        canActivate:[authGuard]
       },
       {
         path:'pipe',
-        component:PipeComponent
+        component:PipeComponent,
+        canActivate:[authGuard]
       },
       {
         path:'template-form',
-        component:TemplateComponent
+        component:TemplateComponent,
+        canActivate:[authGuard]
       },
       {
         path:'reactiv-form',
-        component:ReactiveComponent
+        component:ReactiveComponent,
+        canActivate:[authGuard]
       },
       {
         path:'get-api',
-        component:GetApiComponent
+        component:GetApiComponent,
+        canActivate:[authGuard]
       },
       {
         path:'Post-api',
-        component:PostComponent
+        component:PostComponent,
+        canActivate:[authGuard]
       },
       {
         path:'lifecycle',
-        component:LifeCycleEventComponent
+        component:LifeCycleEventComponent,
+        canActivate:[authGuard]
       },
       {
         path:'ng-template',
-        component:NgTemplateComponent
+        component:NgTemplateComponent,
+        canActivate:[authGuard]
       },
       {
         path:'ng-containar',
-        component:NgContainerComponent
+        component:NgContainerComponent,
+        canActivate:[authGuard]
       },
       {
         path:'viewChild',
-        component:ViewChildComponent
+        component:ViewChildComponent,
+        canActivate:[authGuard]
       }
     ]
   }
