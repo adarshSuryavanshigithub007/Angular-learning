@@ -13,12 +13,17 @@ import { NgxSpinnerService } from 'ngx-spinner';
   templateUrl: './addnewbooks.component.html',
   styleUrl: './addnewbooks.component.css'
 })
-export class AddnewbooksComponent {
+export class AddnewbooksComponent implements OnInit {
   formValue = null
   getAllBooks: any = null
-  constructor(private service: BooksManagementApiserviceService, private spinner: NgxSpinnerService, private router: Router) {
+  constructor(private service: BooksManagementApiserviceService, private spinner: NgxSpinnerService, private router: Router) {}
+
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
     this.getBooksList()
   }
+
   newBookForm: FormGroup = new FormGroup({
     title: new FormControl(''),
     author: new FormControl(''),
@@ -67,6 +72,7 @@ export class AddnewbooksComponent {
 
   }
   getBooksList() {
+    console.log("calling")
     try {
       this.spinner.show()
       this.service.listOfBooks().subscribe((response) => {

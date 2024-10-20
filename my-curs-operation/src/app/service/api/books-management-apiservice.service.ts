@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Constants } from '../../config/API';
 import { APIConstants } from '../../constant/api.constants';
 import { UserApIEndPointConstants } from '../../constant/user-api-end-point.constants';
 
@@ -23,7 +22,7 @@ interface Response {
   providedIn: 'root'
 })
 export class BooksManagementApiserviceService {
-  // public URL: string = Constants.API_URL;
+  public URL: string = APIConstants.API_URL;
   public Token =  localStorage.getItem('token')
   constructor(private http: HttpClient) { }
 
@@ -37,6 +36,7 @@ export class BooksManagementApiserviceService {
   }
 
   listOfBooks(){
+    console.log(this.URL,)
     return this.http.get<Response>(`${APIConstants.API_URL}/${UserApIEndPointConstants.BOOKMANAGEMENT_METHOD.GET_ALL_BOOKS}`,{
       headers: {
         'Authorization': `Bearer ${this.Token}`
@@ -53,6 +53,7 @@ export class BooksManagementApiserviceService {
   }
 
   getDataById=(id:any)=>{
+    console.log(APIConstants.API_URL,this.URL)
 console.log(id)
     return this.http.get<Response>(`${APIConstants.API_URL}/${UserApIEndPointConstants.BOOKMANAGEMENT_METHOD.CREATE_BOOK}/`+id,{
       headers: {

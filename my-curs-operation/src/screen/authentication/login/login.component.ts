@@ -31,11 +31,13 @@ export class LoginComponent {
   router = inject(Router)
 
   loginUser(){
+    console.log("calling")
     this.spinner.show()
     this.http.post<LoginResponse>('http://localhost:8080/api/v1/user/login', this.loginObj)
   .subscribe((response) => {
     console.log(response);
     if (response.success) {
+      console.log("calling")
       this.spinner.hide()
       localStorage.setItem('token', response.token);
       this.router.navigate(['/add-Books']);
